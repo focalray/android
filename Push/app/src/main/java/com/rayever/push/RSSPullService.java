@@ -14,6 +14,7 @@ import java.util.Date;
 import java.util.Vector;
 import android.os.Binder;
 import android.os.IBinder;
+import android.util.Log;
 import android.widget.Toast;
 import android.os.Handler;
 import android.os.Looper;
@@ -21,6 +22,7 @@ import android.os.HandlerThread;
 import android.os.Message;
 import android.os.Process;
 import android.app.Service;
+import android.app.AlertDialog;
 
 
 //public class RSSPullService extends IntentService
@@ -64,7 +66,12 @@ public class RSSPullService extends Service
             // For our sample, we just sleep for 5 seconds.
             try
             {
-                Thread.sleep(5000);
+                for(int k=0; k<10; k++)
+                {
+                    Thread.sleep(5000);
+
+                    Log.d("Push", "Still alive!!!");
+                }
             }
             catch (InterruptedException e)
             {

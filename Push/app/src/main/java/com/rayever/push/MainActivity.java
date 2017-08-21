@@ -30,8 +30,23 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null)
+        {
+            String myParam = extras.getString("MSG");
+            Toast.makeText(getApplicationContext(), myParam, Toast.LENGTH_LONG).show();
+        }
+        else
+        {
+            //..oops!
+        }
+
+
+
         Intent intent = new Intent(this, RSSPullService.class);
         startService(intent);
+        //startForeground(intent);
 
         LocalBroadcastManager.getInstance(this).registerReceiver(
                 mHandler, new IntentFilter("com.rayever.push_MSG"));

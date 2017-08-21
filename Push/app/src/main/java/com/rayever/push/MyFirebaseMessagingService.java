@@ -2,6 +2,7 @@ package com.rayever.push;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.os.Message;
 import android.util.Log;
 import android.view.Gravity;
 import android.widget.Toast;
@@ -39,6 +40,10 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService
                 intent.putExtra("message", msg);
                 LocalBroadcastManager localBroadcastManager = LocalBroadcastManager.getInstance(this);
                 localBroadcastManager.sendBroadcast(intent);
+
+                intent = new Intent(this, MainActivity.class);
+                intent.putExtra("MSG", "Hello from service.");
+                startActivity(intent);
             }
         }
 
